@@ -35,6 +35,7 @@ class PatientBill
     }
     #endregion
 
+    // Calcuating the Values Method
     public void Calculate()
     {
         this.GrossAmount = this.ConsultationFee + this.LabCharges + this.MedicineCharges;
@@ -42,7 +43,7 @@ class PatientBill
 
         if (HasInsurance)
         {
-            this.DiscountAmount = this.GrossAmount * (decimal)0.10;
+            this.DiscountAmount = this.GrossAmount * (decimal)0.10; // converting double to decimal for * operation
         }
 
         this.FinalPayable = this.GrossAmount - this.DiscountAmount;
@@ -52,7 +53,6 @@ class PatientBill
 
 class MediSure
 {
-
     // Register Method
     public static PatientBill Register(PatientBill p1)
     {
@@ -148,8 +148,7 @@ class MediSure
     {
         // Diplaying Data
         #region
-        Console.Write('\n');
-        Console.WriteLine("---- Last Bill ----");
+        Console.WriteLine("\n---- Last Bill ----\n");
         Console.WriteLine("Bill Id: " + p1.BillId);
         Console.WriteLine("Patient: " + p1.PatientName);
         Console.WriteLine("Insured: " + p1.HasInsurance);
@@ -168,7 +167,7 @@ class MediSure
         // Clearing Last Bill
         #region
         p1 = new PatientBill();
-        Console.WriteLine("Last Bill Cleared!");
+        Console.WriteLine("\nLast Bill Cleared!\n");
         #endregion
 
         return p1;
@@ -183,7 +182,7 @@ class MediSure
 
         while(true)
         {
-            Console.WriteLine("MediSure Clinic Billing");
+            Console.WriteLine("\n------------MediSure Clinic Billing------------\n");
             Console.WriteLine("1. Create New Bill (Enter Patient Details)");
             Console.WriteLine("2. View Last Bill");
             Console.WriteLine("3. Clear Last Bill");
@@ -191,8 +190,7 @@ class MediSure
             Console.Write("Enter Your Option: ");
             choice = Console.ReadLine();
 
-            // if - else if conditions to check 
-
+            // if - else if conditions to check
             if(choice == "1")
             {
                 p1 = Register(p1);
@@ -211,7 +209,7 @@ class MediSure
             // terminate the loop
             else if (choice == "4")
             {
-                Console.WriteLine("Application Closed Successfully! Thank You!!");
+                Console.WriteLine("\nApplication Closed Successfully! Thank You!!\n");
                 break;
             }
 
